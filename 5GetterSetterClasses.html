@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Example</title>
+    <link rel="stylesheet" href="css/base.css"/>
+    <!--How to include jquery in an html page - by external cdn, minified version and local copy-->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <style type="text/css">
+
+
+
+        p {
+            margin: 1em;
+        }
+        .selected {
+            color: blue;
+        }
+        .highlight {
+            background: yellow;
+        }
+        .section0 {
+            font-size: 1em;
+        }
+        .section1 {
+            font-size: 1.5em;
+        }
+        .section2 {
+            font-size: 2em;
+        }
+
+    </style>
+    <script type="text/javascript">
+
+        $(function(){
+            $('#btn_do_something').click(function(){
+
+                $('.container').children('p').eq(0).addClass('selected');
+                $('.container').children('p').eq(1).addClass('selected highlight');
+                $('.container').children('p').addClass(function(index){
+                    return 'section' + index;
+                });
+
+                // Execute prior code
+                $('.container').children('p').removeClass(function(index){
+                    return 'section' + index;
+                });
+
+                console.log($('.container').children('p').eq(1).is('.highlight.selected'));
+            });
+
+            $('#btn_toggle_class').click(function(){
+                $('.container').children('p').eq(1).toggleClass('highlight');
+                console.log($('.container').children('p').eq(1).is('.highlight'));
+
+                // comment prior code
+                // $('.container').children('p').eq(1).toggleClass('highlight', false);
+
+            });
+
+            $('.container').children('p').click(function(){
+                $(this).toggleClass('selected');
+                console.log('Is highlight and selected?' + $('.container').children('p').eq(1).is('.highlight.selected'));
+            });
+        });
+
+    </script>
+</head>
+<body>
+<div class="container">
+
+    <h1>Getters and Setters</h1>
+    <span class="button" id='btn_do_something'>Do Something!</span>
+    <span class="button" id='btn_toggle_class'>Toggle class</span>
+    <div class="container">
+        <p>California</p>
+        <p>Texas</p>
+        <p>Washington</p>
+    </div>
+
+</div>
+</body>
+</html>

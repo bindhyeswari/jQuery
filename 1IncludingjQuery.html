@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Example</title>
+    <link rel="stylesheet" href="css/base.css"/>
+    <!--How to include jquery in an html page - by external cdn, minified version and local copy-->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <style type="text/css">
+
+        span.blue {
+            background-color: #72a8c5;
+        }
+
+    </style>
+    <script type="text/javascript">
+
+        $(function(){
+
+            var btn = $('#btn_say_hello');
+            // Explain about DOMContentLoaded event (HTML5) and the window load event
+            // Select a button with an id
+            btn.click(function(){  // what does this do
+                alert('Hello World!');
+            });
+
+            // first part ends here!
+
+            // Some more handlers (note order of evaluation)
+            btn.click(function(){  // what does this do
+                $('#btn_say_hello').toggleClass('blue');
+            });
+
+            console.log(btn);
+
+            console.log(btn[0]);
+            // btn.html('Changed from jQuery wrapped object!');
+            // btn[0].innerHTML = 'Changed from browser object!';
+        });
+
+    </script>
+</head>
+<body>
+    <div class="container">
+
+        <h1>jQuery Hello World!</h1>
+        <span class="button" id='btn_say_hello'>Say Hello</span>
+        <div id='#state_container'>
+
+        </div>
+    </div>
+</body>
+</html>

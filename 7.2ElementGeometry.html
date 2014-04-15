@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Example</title>
+    <link rel="stylesheet" href="css/base.css"/>
+    <!--How to include jquery in an html page - by external cdn, minified version and local copy-->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/exampleObjects.js"></script>
+    <style type="text/css">
+
+        p {
+            padding: 1em;
+        }
+
+        div.state {
+            padding: 1em;
+            border: 1px solid gray;
+            border-radius: 0.25em;
+            margin: 0.5em;
+        }
+
+        img {
+        }
+
+
+    </style>
+    <script type="text/javascript">
+
+        jQuery(function(){
+
+            $('#btn1').click(function(){
+
+                var container = $('.sm1').eq(0);
+                for (var prop in jsonStateData) {
+                    // console.log(prop + ':' + jsonStateData[prop]);
+                    container.append(
+                            $('<div>').addClass('state').html(prop + ' : ' + jsonStateData[prop])
+                    );
+                }
+
+                $('#document_height').html($(document).height());
+                $('#window_height').html($(window).height());
+
+                var div = $('#height_demo');
+                $('#height').html(div.height());
+                $('#inner_height').html(div.innerHeight());
+                $('#outer_height').html(div.outerHeight());
+                $('#outer_height_margin').html(div.outerHeight(true));
+
+                // Class task: Similarly calculate the width information
+                // Class task: set the height of all state class divs to 5em
+            });
+
+            $('#btn2').click(function(){
+                    $(window).scrollTop($(window).scrollTop() + $(window).height());
+            });
+
+
+        });
+
+    </script>
+</head>
+<body>
+<div class="container">
+
+    <h1>Element Geometry</h1>
+    <span class="button" id='btn1'>Create State Divs</span>
+    <span class="button" id="btn2">Scroll down by one page</span>
+    <div class="container">
+        <p>Document Height: <em id='document_height'></em></p>
+        <p>Window Height: <em id='window_height'></em></p>
+    </div>
+    <div class="container" id='height_demo' style="border: 1px solid gray; margin: 1em;">
+       This is to show the height (<em id='height'>No Data</em>), innerHeight(<em id='inner_height'>No Data</em>)
+            and outerHeight(<em id='outer_height'>No Data</em>), outerHeight and margin(<em id='outer_height_margin'>No Data</em>) properties.
+    </div>
+    <div class="container sm1">
+
+    </div>
+</div>
+</body>
+</html>

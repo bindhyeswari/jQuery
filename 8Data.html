@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Example</title>
+    <link rel="stylesheet" href="css/base.css"/>
+    <!--How to include jquery in an html page - by external cdn, minified version and local copy-->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/exampleObjects.js"></script>
+    <style type="text/css">
+
+
+
+
+    </style>
+    <script type="text/javascript">
+
+        jQuery(function(){
+            var jdiv = $('.sm1').eq(0); // Get the jquery wrapped div object
+            $('#btn1').click(function(){
+
+                jdiv.data('name', 'mydiv');
+                console.log(jdiv.data());
+
+                // Execute prior code first
+                jdiv.data({
+                    uuid: 'asdf2-ffdf-582afdsf-asdfffasdffvw369',
+                    cid: '221985'
+                });
+                console.log(jdiv.data());
+
+            });
+
+            $('#btn2').click(function(){
+
+                jdiv.removeData('name');
+                console.log(jdiv.data());
+
+                // Execute prior code first
+                jdiv.removeData();
+                console.log(jdiv.data());
+
+            });
+
+
+        });
+
+    </script>
+</head>
+<body>
+<div class="container">
+
+    <h1>Element Data</h1>
+    <span class="button" id='btn1'>Associate Data</span>
+    <span class="button" id="btn2">Remove Data</span>
+
+    <div class="container sm1">
+        Associate data with this div.
+    </div>
+</div>
+</body>
+</html>

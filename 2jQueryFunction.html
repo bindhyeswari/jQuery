@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Example</title>
+    <link rel="stylesheet" href="css/base.css"/>
+    <!--How to include jquery in an html page - by external cdn, minified version and local copy-->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <style type="text/css">
+
+        div.mydiv {
+            min-height: 10em;
+            min-width: 10em;
+            border: 1px solid gray;
+            box-shadow: 1px 1px 5px #ccc;
+            margin: 6em;
+        }
+
+        #myspan {
+            display: inline-block;
+            background-color: slateblue;
+            border-radius: 0.15em;
+            min-height: 1em;
+            min-width: 40em;
+            margin: 6em;
+        }
+
+    </style>
+    <script type="text/javascript">
+
+        $(document).ready();
+
+        $(function(){
+
+            $('#btn_do_something').click(function(){
+
+                // Four ways to use jQuery() function
+
+                // First
+                $('.mydiv').css({backgroundColor: '#ccc'});
+                // First - additional parameter
+                // $('.mydiv', '#div1').css({backgroundColor: 'red'});
+
+                // Second way (comment out the code for previous way):
+                var div = document.getElementById('div2');
+                $(div).html('populated data!');
+                // Question: will div.html() work?
+                // What will work then?
+
+                // Third way:
+                /*var span = $('<span id="myspan">');
+                $('body').append(span);*/
+
+                // Third way with optional parameters:
+                var span = $('<span>', {
+                    id: 'myspan',
+                    click: spanClickHandler
+                });
+                $('body').append(span);
+
+                // Fourth way (right on top)
+
+
+
+            });
+
+
+            function spanClickHandler(e){
+                console.log(e);
+                $(e.currentTarget).css({'backgroundColor':'green'});
+            }
+
+
+
+        });
+
+    </script>
+</head>
+<body>
+<div class="container">
+
+    <h1>Ways to use jQuery</h1>
+    <span class="button" id='btn_do_something'>Do Something!</span>
+    <div id='#state_container'>
+        <div class='mydiv'>
+
+        </div>
+        <div class='mydiv' style="width: 40em; height: 40em;">
+            <div id='div1'>
+                <div class="mydiv" id='div2'>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

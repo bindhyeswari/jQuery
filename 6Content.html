@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Example</title>
+    <link rel="stylesheet" href="css/base.css"/>
+    <!--How to include jquery in an html page - by external cdn, minified version and local copy-->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <style type="text/css">
+
+        p {
+            padding: 1em;
+        }
+
+
+    </style>
+    <script type="text/javascript">
+
+        jQuery(function(){
+            var op = $('.sm1').text();
+            console.log(op);
+
+            var op2 = $('.sm1').html();
+            console.log(op2);
+
+            $('title').text(op);
+
+            $('span').click(function(){
+                $('p').text(function(index, _text){
+                    return 'Para ' + (index+1) + ' : ' +  _text
+                });
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+<div class="container">
+
+    <h1>Element Content</h1>
+    <span class="button">Set Paragraph Numbers</span>
+    <div class="container sm1">
+        Text inside container sm1
+        <p id='paragraph'>
+            Text inside paragraph
+        </p>
+        <p>
+            Text inside second paragraph
+        </p>
+        <p>
+            Text inside third paragraph
+        </p>
+    </div>
+
+
+
+</div>
+</body>
+</html>
